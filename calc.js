@@ -1,7 +1,27 @@
 
 // TODO: DEFINE ANY VARIABLES HERE
+let operator; // operator will change
+let tempNum = ''; // hold each num before being added?
+let total = 0; // total will change
+let activeOperator = false; // default to false
 
+// OPERATION FUNCTIONS
 
+function add(firstNum, secondNum) {
+  return (parseInt(firstNum) + parseInt(secondNum));
+}
+
+function subtract(firstNum, secondNum) {
+  return (parseInt(secondNum) - parseInt(firstNum));
+}
+
+function divide(firstNum, secondNum) {
+  return (parseInt(secondNum) / parseInt(firstNum));
+}
+
+function multiply(firstNum, secondNum) {
+  return (parseInt(firstNum) * parseInt(secondNum));
+}
 
 /**
  * 		EDIT ME!
@@ -15,6 +35,65 @@ function handleButtonClick(buttonValue) {
 
     // TODO: YOUR CODE GOES IN HERE!
 
+    if (buttonValue === "c") {
+      total = 0;
+      tempNum = '';
+      clearDisplay(tempNum);
+    } else if (buttonValue === "x") {
+      total = add(tempNum, total);
+      operator = 1;
+      tempNum = '';
+      activeOperator = true;
+      updateDisplay(buttonValue);
+    } else if (buttonValue === "*") {
+      total = add(tempNum, total);
+      operator = 1;
+      tempNum = '';
+      activeOperator = true;
+      updateDisplay(buttonValue);
+    } else if (buttonValue === "/") {
+      total = add(tempNum, total);
+      operator = 2;
+      tempNum = '';
+      activeOperator = true;
+      updateDisplay(buttonValue);
+    } else if (buttonValue === "+") {
+      total = add(tempNum, total);
+      operator = 3;
+      tempNum = '';
+      activeOperator = true;
+      updateDisplay(buttonValue);
+    } else if (buttonValue === "-") {
+      total = subtract(total, tempNum);
+      operator = 4;
+      tempNum = '';
+      activeOperator = true;
+      updateDisplay(buttonValue);
+    } else if (buttonValue === "=" && operator == 1) {
+      total = multiply(tempNum, total);
+      tempNum = '';
+      clearDisplay();
+      updateDisplay(total);
+    } else if (buttonValue === "=" && operator == 2) {
+      total = divide(tempNum, total);
+      tempNum = '';
+      clearDisplay();
+      updateDisplay(total);
+    } else if (buttonValue === "=" && operator == 3) {
+      total = add(tempNum, total);
+      tempNum = '';
+      clearDisplay();
+      updateDisplay(total);
+    } else if (buttonValue === "=" && operator == 4) {
+      total = subtract(tempNum, total);
+      tempNum = "";
+      clearDisplay();
+      updateDisplay(total);
+    } else {
+      tempNum += buttonValue;
+      updateDisplay(buttonValue);
+      activeOperator = false;
+  }
 }
 
 
